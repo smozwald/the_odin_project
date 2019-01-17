@@ -2,6 +2,11 @@
     box-sizing: border-box;     
 }
 
+html, body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+}
 span {
     display: inline-block;
 }
@@ -9,6 +14,10 @@ span {
 img {
     max-height: 100%;
     max-width: 100%;
+}
+
+form {
+    vertical-align: middle;
 }
 
 .user {
@@ -51,12 +60,12 @@ img {
     box-shadow: 0 3px 2px rgba(0, 0, 0, 0.3); 
 }
 
-input {
-    border: none;
-    height:100%;
-}
 #main-search {
     width: 36.5em;
+    border: none;
+    height:2em;
+    position:relative;
+    bottom:1em;
 }
 
 .search form button {
@@ -67,3 +76,111 @@ input {
     background-color: white;
 }
 
+#tools {
+    border-bottom: 1px solid #D3D3D3;
+    width:100%;
+    padding-left:10em;
+}
+
+
+.tool {
+    Position: relative;
+    text-align: center;
+    bottom: 1em;
+    width: 3.8em;
+}
+
+.tool a {
+    color: gray;
+    text-decoration: none;
+}
+
+.tool a:hover {
+    color: black;
+}
+
+#results {
+    margin-left: 10em;
+    margin-top:1em;
+}
+
+.speed {
+    color:gray;
+    font-size: 0.8em;
+    padding-left: 1.4em;
+}
+
+.result {
+    margin: 1em 0 2em 2em;
+    width:40em;
+}
+
+.title {
+    display: block;
+    padding:0;
+    font-size:1.2em;
+    text-decoration: none;
+}
+
+.pagelink {
+    margin:0;
+    font-size:0.8em;
+    color: green;
+    text-decoration: none;
+}
+.content {
+    margin:0;
+    color:darkslategrey;
+    font-size: 0.9em;
+}
+
+#related {
+    margin-left: 2em;
+}
+h1 {
+    font-size: 1.2em;
+}
+
+#related a {
+    display: block;
+    margin:1em 0 1em 0;
+    text-decoration: none;
+}
+
+a {
+    color: blue;
+}
+
+#more-search {
+    width:40em;
+    text-align: center;
+}
+
+#legal {
+    background-color:lightgray;
+    widows: 100%;
+    padding-left: 10em;
+    border-top: 1px darkslategray solid;
+}
+
+#legal div {
+
+    color:darkslategrey;
+}
+
+.city {
+    color:darkslategrey;
+    padding-right: 2em;
+    margin-right: 2em;
+}
+
+.more {
+    border-top: 1px darkslategray solid;
+    width:40em;
+    text-align: justify;
+    padding-bottom: 2em;
+}
+.more a{
+    color:darkslategrey;
+    text-decoration: none;
+}
