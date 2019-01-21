@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Function scope example</title>
+</head>
+<body>
+  
+  <script>
+    function add7(num) {
+        return num + 7;
+    }
+    function multiply(num1,num2) {
+        return num1*num2;
+    }
+    function capitalize(rawString) {
+        capString = rawString[0].toUpperCase() + rawString.slice(1).toLowerCase();
+        return capString;
+    }
+    function lastLetter (rawString) {
+        return rawString.charAt(rawString.length-1);
+    }
+  </script>
+</body>
+</html>
