@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+    </head>
+
+<body>
+    <h1>
+      THE TITLE OF YOUR WEBPAGE
+    </h1>
+    <div id="container">
+        <button id="btn">Click Me</button>
+    </div>
+
+    <script>
+        const container = document.querySelector('#container');
+
+        const content = document.createElement('div');
+        content.classList.add('content');
+        content.textContent = 'This is the glorious text-content!';
+
+        container.appendChild(content);
+        const para = document.createElement('p');
+        para.style.color = 'red';
+        para.textContent = "This is a red paragraph.";
+        container.appendChild(para);
+
+        const head3 = document.createElement('h3');
+        head3.style.color = 'blue';
+        head3.textContent = "I'm a blue h3";
+        container.appendChild(head3);
+
+        const wildDiv = document.createElement('div');
+        wildDiv.style.backgroundColor = "pink";
+        wildDiv.style.border = "black 1px solid";
+        
+        const head1 = document.createElement('h1');
+        head1.textContent = "I'm in a div!";
+        wildDiv.appendChild(head1);
+        const para2 = document.createElement('p');
+        para2.textContent = "Me too!";
+        wildDiv.appendChild(para2);
+
+        container.appendChild(wildDiv);
+
+        var btn = document.querySelector("#btn");
+        btn.addEventListener("click", () => {
+            alert("Hello World");
+        });
+
+        btn.addEventListener('click', function(e){
+        e.target.style.background = 'blue';
+        });
+
+
+
+    
+    </script>
+  </body>
+  </html>
