@@ -108,9 +108,7 @@ class Board():
             curr_dict = pos_dict[depth]
             parent = curr_dict[str(target_val)]
             depth -= 1
-        
-        ##Clean up due to issues with next iterations
-        del(target_val)
+
         return (path_solution, max_depth)
 
 
