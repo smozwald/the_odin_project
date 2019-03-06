@@ -37,19 +37,89 @@ class Board():
                 new_pos.append(potential_pos)
         return new_pos
 
-
-    def get_moves(self, start_pos = [], end_pos = [], depth = 0, search_path = [], searched = []):
+    def get_moves(self, start_pos = [], end_pos = []):
         """start pos and end pos are what we have and what we search for.
         Depth is the current amount of moves taken, search path is the current search path, 
-        and searched is used to eliminate squares already explored in a shallower iteration."""
-        search = []
+        and searched is used to eliminate squares already explored in a shallower iteration.
+        Breadth first search used, could be modified to add a heuristic calculating path distance."""
+        searched = []
+        depth = 0
         if not (len(start_pos) == 2 or len(end_pos) == 2):
             return ("Please input parameters for start and end moves")
         valid = self.valid_check(start_pos, end_pos)
         if not (valid):
             return ("The moves you have attempted exceed board dimensions")
+        if start_pos == end_pos:
+            return ([start_pos], 0)
         
         new_pos = self.get_positions(start_pos, searched)
+        if end_pos in new_pos:
+            return ([start_pos, end_pos], 1)
+
+        ##Dict should link back to parent node.
+        pos_dict = {}
+        pos_dict[depth] = {str(start_pos): 0}
+        solved = False
+        searched.append([start_pos])
+
+        ##Create a master list of everything thats been searched so these aren't appended
+        all_searched = []
+        all_searched.append(start_pos)
+
+        ##Ranking the potential moves based on closeness to 
+        new_pos_dict = {}
+        for pos in new_pos:
+            new_pos_dict[str(pos)] = 0 ##Start index will always be 0
+            all_searched.append(pos)
+        
+        pos_dict[depth+1] = new_pos_dict
+        searched.append(new_pos)
+
+        ##Get the solution before searching back through to find it.
+        while not solved:
+            depth += 1
+            new_pos_dict = {}
+            next_pos = []
+            for i,pos in enumerate(new_pos):
+                check_pos = self.get_positions(pos, all_searched)
+                if end_pos in check_pos:
+                    first_parent = i
+                    solved = True
+                    break
+                for new_pos in check_pos:
+                    new_pos_dict[str(new_pos)] = i
+                    next_pos.append(new_pos)
+                    all_searched.append(new_pos)
+        
+            pos_dict[depth+1] = new_pos_dict
+            new_pos = next_pos
+            searched.append(next_pos)
+        
+        ##Once the first parent is retrieved, we know where to look at current depth
+        path_solution = [end_pos]
+        parent = first_parent
+        max_depth = depth + 1 ##To iterate and dispay properly
+
+
+        ##We will iterate through, finding the target value at one depth, and index for the next.
+        for i in range(max_depth):
+            target_val = searched[depth][parent]
+            path_solution.insert(0, target_val)
+            curr_dict = pos_dict[depth]
+            parent = curr_dict[str(target_val)]
+            depth -= 1
+        
+        ##Clean up due to issues with next iterations
+        del(target_val)
+        return (path_solution, max_depth)
+
+
+
+
+
+
+            
+
 
 
 
